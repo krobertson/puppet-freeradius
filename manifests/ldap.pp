@@ -37,9 +37,12 @@ define freeradius::ldap (
   # FR3.1 format server = 'ldap1.example.com'
   #              server = 'ldap2.example.com'
   #              server = 'ldap3.example.com'
-  $serverconcatarray = $::freeradius_version ? {
-    /^3\.0\./ => any2array(join($serverarray, ',')),
-    default   => $serverarray,
+  $serverconcatarray = defined('$::freeradius_version') ? {
+    true => $::freeradius_version ? {
+      /^3\.0\./ => any2array(join($serverarray, ',')),
+      default   => $serverarray,
+    },
+    false => $serverarray,
   }
 
   # Fake booleans (FR uses yes/no instead of true/false)
