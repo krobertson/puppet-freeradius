@@ -2,7 +2,7 @@
 class freeradius (
   $control_socket  = false,
   $max_servers     = '4096',
-  $max_requests    = '4096',
+  $max_requests    = 4096,
   $mysql_support   = false,
   $perl_support    = false,
   $utils_support   = false,

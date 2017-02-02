@@ -8,7 +8,7 @@ define freeradius::module::eap (
   Integer $timer_expire                                             = 60,
   Freeradius::Boolean $ignore_unknown_eap_types                     = 'no',
   Freeradius::Boolean $cisco_accounting_username_bug                = 'no',
-  Integer $max_sessions                                             = "\${max_requests}",
+  Integer $max_sessions                                             = $::freeradius::max_requests,
   Boolean $eap_pwd                                                  = false,
   Optional[Variant[String,Integer]] $pwd_group                      = undef,
   Optional[String] $pwd_server_id                                   = undef,
